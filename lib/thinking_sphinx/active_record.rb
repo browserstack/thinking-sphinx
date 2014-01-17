@@ -329,7 +329,7 @@ module ThinkingSphinx
           include ThinkingSphinx::ActiveRecord::Delta
 
           before_save  :toggle_delta
-          after_commit :index_delta
+          after_commit :index_delta, :on => :create
         end
       end
 
