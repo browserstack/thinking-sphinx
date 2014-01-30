@@ -330,6 +330,8 @@ module ThinkingSphinx
 
           before_save  :toggle_delta
           after_commit :index_delta, :on => :create
+	  #https://github.com/rails/rails/issues/988
+          after_commit :index_delta_on_destroy, :on => :destroy
         end
       end
 

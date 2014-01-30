@@ -46,6 +46,12 @@ module ThinkingSphinx
             }
           end
 
+          def index_delta_on_destroy
+            self.class.index_delta(self) if self.class.delta_objects.any? { |obj|
+              obj.toggled(self)
+            }
+          end
+
           def should_toggle_delta?
             return fire_delta? if respond_to?(:fire_delta?)
 
